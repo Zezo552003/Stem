@@ -5,7 +5,7 @@ import joblib
 
 model = joblib.load('model.pkl')
 st.title("SVM Classifier Web App")
-220914_bloodstemcell_1.jpg
+
 st.image('bloodstemcell.jpg', use_column_width=True)  # Replace "path_to_your_image.jpg" with the actual path to your image
 
 # User input fields
