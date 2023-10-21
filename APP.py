@@ -4,34 +4,33 @@ import pandas as pd
 import joblib
 
 model = joblib.load('model.pkl')
-st.title("SVM Classifier Web App")
+st.title("GVHD prediction")
 
 st.image('bloodstemcell.jpg', use_column_width=True)  # Replace "path_to_your_image.jpg" with the actual path to your image
-
-# User input fields
-st.sidebar.header("User Input")
+st.header("User Input")
 
 # Define input fields for the variables you provided
-st.sidebar.subheader("User Input Variables")
+st.subheader("User Input Variables")
 
-# Define input fields based on the role and type of each variable
-ABOmatch = st.sidebar.radio("ABOmatch (Compatibility of donor and recipient according to ABO blood group - Matched: 1, Mismatched: 0)", [1, 0])
-Gendermatch = st.sidebar.radio("Gendermatch (Compatibility of donor and recipient according to gender - Female to Male: 1, Other: 0)", [1, 0])
-HLAmatch = st.sidebar.selectbox("HLAmatch (Compatibility of antigens of the main histocompatibility complex of the donor and the recipient according to ALL international BFM SCT 2008 criteria)", [0, 1, 2, 3])
-HLAmismatch = st.sidebar.radio("HLAmismatch (HLA matched: 0, HLA mismatched: 1)", [0, 1])
-Recipientgender = st.sidebar.radio("Recipientgender (Male - 1, Female - 0)", [1, 0])
-Stemcellsource = st.sidebar.radio("Stemcellsource (Peripheral blood - 1, Bone marrow - 0)", [1, 0])
-Riskgroup = st.sidebar.radio("Riskgroup (High risk: 1, Low risk: 0)", [1, 0])
-DonorABO = st.sidebar.selectbox("DonorABO (ABO blood group of the donor of hematopoietic stem cells)", [0, 1, -1, 2])
-RecipientABO = st.sidebar.selectbox("RecipientABO (ABO blood group of the recipient of hematopoietic stem cells)", [0, 1, -1, 2])
-RecipientRh = st.sidebar.radio("RecipientRh (Presence of the Rh factor on recipient's red blood cells - '+': 1, '-': 0)", [1, 0])
-CMVstatus = st.sidebar.selectbox("CMVstatus (Serological compatibility of donor and recipient according to cytomegalovirus)", [0, 3])
-DonorCMV = st.sidebar.radio("DonorCMV (Presence of cytomegalovirus infection in the donor of hematopoietic stem cells prior to transplantation - Present: 1, Absent: 0)", [1, 0])
-RecipientCMV = st.sidebar.radio("RecipientCMV (Presence of cytomegalovirus infection in the donor of hematopoietic stem cells prior to transplantation - Presence: 1, Absence: 0)", [1, 0])
-Diseasegroup = st.sidebar.radio("Diseasegroup (Type of disease - Malignant: 1, Nonmalignant: 0)", [1, 0])
-Relapse = st.sidebar.radio("Relapse (Reoccurrence of the disease - No: 0, Yes: 1)", [0, 1])
-Antigen = st.sidebar.selectbox("Antigen (In how many antigens there is a difference between the donor and the recipient)", [-1, 0, 1, 2, 3])
-Allele = st.sidebar.selectbox("Allele (In how many alleles there is a difference between the donor and the recipient)", [-1, 0, 1, 2, 3])
+# Define input fields in the main content area
+ABOmatch = st.radio("ABOmatch (Compatibility of donor and recipient according to ABO blood group - Matched: 1, Mismatched: 0)", [1, 0])
+Gendermatch = st.radio("Gendermatch (Compatibility of donor and recipient according to gender - Female to Male: 1, Other: 0)", [1, 0])
+HLAmatch = st.selectbox("HLAmatch (Compatibility of antigens of the main histocompatibility complex of the donor and the recipient according to ALL international BFM SCT 2008 criteria)", [0, 1, 2, 3])
+HLAmismatch = st.radio("HLAmismatch (HLA matched: 0, HLA mismatched: 1)", [0, 1])
+Recipientgender = st.radio("Recipientgender (Male - 1, Female - 0)", [1, 0])
+Stemcellsource = st.radio("Stemcellsource (Peripheral blood - 1, Bone marrow - 0)", [1, 0])
+Riskgroup = st.radio("Riskgroup (High risk: 1, Low risk: 0)", [1, 0])
+DonorABO = st.selectbox("DonorABO (ABO blood group of the donor of hematopoietic stem cells)", [0, 1, -1, 2])
+RecipientABO = st.selectbox("RecipientABO (ABO blood group of the recipient of hematopoietic stem cells)", [0, 1, -1, 2])
+RecipientRh = st.radio("RecipientRh (Presence of the Rh factor on recipient's red blood cells - '+': 1, '-': 0)", [1, 0])
+CMVstatus = st.selectbox("CMVstatus (Serological compatibility of donor and recipient according to cytomegalovirus)", [0, 3])
+DonorCMV = st.radio("DonorCMV (Presence of cytomegalovirus infection in the donor of hematopoietic stem cells prior to transplantation - Present: 1, Absent: 0)", [1, 0])
+RecipientCMV = st.radio("RecipientCMV (Presence of cytomegalovirus infection in the donor of hematopoietic stem cells prior to transplantation - Presence: 1, Absence: 0)", [1, 0])
+Diseasegroup = st.radio("Diseasegroup (Type of disease - Malignant: 1, Nonmalignant: 0)", [1, 0])
+Relapse = st.radio("Relapse (Reoccurrence of the disease - No: 0, Yes: 1)", [0, 1])
+Antigen = st.selectbox("Antigen (In how many antigens there is a difference between the donor and the recipient)", [-1, 0, 1, 2, 3])
+Allele = st.selectbox("Allele (In how many alleles there is a difference between the donor and the recipient)", [-1, 0, 1, 2, 3])
+
 
 # Define a function to preprocess user input
 def preprocess_user_input(user_input):
