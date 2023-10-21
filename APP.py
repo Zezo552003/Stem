@@ -50,7 +50,7 @@ def preprocess_user_input(user_input):
 
 
 # Prediction based on user input
-if st.sidebar.button("Predict IIIV"):
+if st.button("Predict"):
     # Prepare user input as a DataFrame
     user_input = pd.DataFrame({
         'ABOmatch': [ABOmatch],
@@ -86,8 +86,8 @@ if st.sidebar.button("Predict IIIV"):
     # Make a prediction using your loaded SVM model
     prediction = model.predict(user_input_scaled)
 
-    st.sidebar.subheader("Prediction (IIIV)")
-    st.sidebar.write("The predicted class for IIIV is:", prediction[0])
+    st.subheader("Prediction")
+    st.write("The predicted class for GVHD is:", prediction[0])
     if prediction[0] == 1:
      st.write("The patient is at high risk to develop GVHD.")
     else:
