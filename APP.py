@@ -89,6 +89,10 @@ if st.sidebar.button("Predict IIIV"):
 
     st.sidebar.subheader("Prediction (IIIV)")
     st.sidebar.write("The predicted class for IIIV is:", prediction[0])
+    if prediction[0] == 1:
+     st.write("The patient is at high risk to develop GVHD.")
+    else:
+     st.write("The patient is at low risk to develop GVHD.")
 
 #
 
