@@ -3,7 +3,7 @@ import pandas as pd
  
 import joblib
 
-model = joblib.load(r'c:\\Users\\ascom\\AppData\\Local\\Programs\\Microsoft VS Code\\model.pkl')
+model = joblib.load(model.pkl')
 st.title("SVM Classifier Web App")
 
 # User input fields
